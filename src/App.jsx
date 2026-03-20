@@ -38,8 +38,42 @@ const SKILL_GROUPS = [
     items: ['OpenCV', 'PyTorch / TensorFlow — базовый уровень'],
   },
   {
+    title: 'Fullstack / UI',
+    items: [
+      'React, Vite',
+      'Фронтенд и прототипы интерфейсов — в основном через Cursor (AI в IDE)',
+    ],
+  },
+  {
     title: 'Прочее',
     items: ['Работа с LLM (API, интеграции)', 'Git / GitHub', 'SSH, удалённые сервера'],
+  },
+];
+
+/** Актуальный фокус — показываем перед опытом работы */
+const CURRENT_FOCUS = {
+  period: '2025 — сейчас',
+  title: 'AI-примерка и рекомендации одежды',
+  intro:
+    'Развиваю сервис примерки и рекомендательную систему; интересно разобраться в устройстве таких систем, чтобы проект можно было применить дальше.',
+  bullets: [
+    'Сервис примерки на FastAPI: по входным данным подбирается промпт, изображение генерируется моделью Nano Banana 2; для уточнения промпта по посадке вещей локально используется Qwen2-VL-2B-Instruct.',
+    'Рекомендации: ориентир — эффективные алгоритмы без лишней тяжести. В проекте: спроектировать сеть, которая по фото вещи выдаёт векторы признаков (стиль, посадка, цвета), затем на их основе построить граф сочетаемости и обходом рекомендовать вещи под стиль пользователя. Задача на этапе проектирования и изучения инструментов.',
+  ],
+};
+
+const PET_PROJECTS = [
+  {
+    title: 'Telegram-бот: поиск соседа в общежитии',
+    text: 'Бот для ДВФУ: помогал находить соседа по общежитию.',
+  },
+  {
+    title: 'Покер против нейросети',
+    text: 'Игра с моделью на базе готовых open-source решений с GitHub.',
+  },
+  {
+    title: 'Бронирование пространств ДВФУ',
+    text: 'Сервис для бронирования помещений/пространств университета.',
   },
 ];
 
@@ -75,7 +109,8 @@ export default function App() {
             <h1 className="hero__name">Спинко Ренат Дмитриевич</h1>
             <p className="hero__role">Backend / Python · Junior</p>
             <p className="hero__tagline">
-              Проектирование и разработка бэкенда; задачи fullstack закрываю с пониманием структуры фронта.
+              Проектирование и разработка бэкенда; fullstack-задачи — с пониманием фронта; UI и прототипы делаю через{' '}
+              <strong>Cursor</strong>.
             </p>
             <nav className="hero__links" aria-label="Контакты">
               <a href={CONTACT.github} target="_blank" rel="noreferrer">
@@ -92,6 +127,34 @@ export default function App() {
             </nav>
           </div>
         </header>
+
+        <section className="section">
+          <h2 className="section__title">Сейчас в работе</h2>
+          <article className="timeline__item timeline__item--highlight">
+            <div className="timeline__meta">
+              <span className="timeline__period">{CURRENT_FOCUS.period}</span>
+              <h3 className="timeline__place">{CURRENT_FOCUS.title}</h3>
+            </div>
+            <p className="current__intro">{CURRENT_FOCUS.intro}</p>
+            <ul className="timeline__bullets">
+              {CURRENT_FOCUS.bullets.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
+            </ul>
+          </article>
+        </section>
+
+        <section className="section">
+          <h2 className="section__title">Пет-проекты</h2>
+          <ul className="pet-list">
+            {PET_PROJECTS.map((p) => (
+              <li key={p.title} className="pet-list__item">
+                <h3 className="pet-list__title">{p.title}</h3>
+                <p className="pet-list__text">{p.text}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <section className="section">
           <h2 className="section__title">Опыт</h2>
