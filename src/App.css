@@ -46,10 +46,15 @@
 }
 
 .hero__tagline {
-  margin: 0 0 16px;
+  margin: 0 0 10px;
   color: var(--muted);
   font-size: 0.95rem;
-  max-width: 52ch;
+  max-width: 58ch;
+  line-height: 1.55;
+}
+
+.hero__tagline--second {
+  margin-bottom: 16px;
 }
 
 .hero__links {
